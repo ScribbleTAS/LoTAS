@@ -12,6 +12,8 @@ import java.util.List;
 import org.apache.commons.io.FileUtils;
 import org.lwjgl.glfw.GLFW;
 
+import com.minecrafttas.TASk5.TASk5;
+
 import de.pfannekuchen.lotas.core.MCVer;
 import de.pfannekuchen.lotas.core.utils.Timer;
 import de.pfannekuchen.lotas.mixin.render.gui.MixinGuiIngameMenu;
@@ -77,6 +79,9 @@ public class SavestateMod {
 		Minecraft mc = Minecraft.getInstance();
 
 		MinecraftServer server = mc.getSingleplayerServer();
+		
+        TASk5.getInstance().countdown.save(Minecraft.getInstance().getSingleplayerServer());
+        TASk5.getInstance().itemhandler.save();
 		
 		server.getPlayerList().saveAll();
 		
@@ -236,7 +241,7 @@ public class SavestateMod {
 		mc.selectLevel(worldName, worldName, null);
 		//#endif
 		//#endif
-		
+        
 		GLFW.glfwSetCursorPos(MCVer.getGLWindow().getWindow(), x, y);
 		mc.mouseHandler.turnPlayer();
 		TickrateChangerMod.updateTickrate(tickratesaved);

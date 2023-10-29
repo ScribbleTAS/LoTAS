@@ -1,9 +1,6 @@
 package de.pfannekuchen.lotas.mixin;
 
 import java.io.IOException;
-import java.util.OptionalLong;
-import java.util.Properties;
-import java.util.UUID;
 
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -12,11 +9,10 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import com.google.gson.JsonObject;
+import com.minecrafttas.TASk5.TASk5;
 import com.mojang.blaze3d.platform.NativeImage;
 
 import de.pfannekuchen.lotas.core.LoTASModContainer;
-import de.pfannekuchen.lotas.core.MCVer;
 import de.pfannekuchen.lotas.core.utils.ConfigUtils;
 import de.pfannekuchen.lotas.core.utils.KeybindsUtils;
 import de.pfannekuchen.lotas.core.utils.Timer;
@@ -28,18 +24,12 @@ import de.pfannekuchen.lotas.mods.TickrateChangerMod;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.Options;
-import net.minecraft.client.gui.screens.GenericDirtMessageScreen;
 import net.minecraft.client.gui.screens.PauseScreen;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.client.renderer.LevelRenderer;
 import net.minecraft.client.renderer.texture.DynamicTexture;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.util.Mth;
-import net.minecraft.world.Difficulty;
-import net.minecraft.world.level.GameRules;
-import net.minecraft.world.level.GameType;
-import net.minecraft.world.level.LevelSettings;
 
 /**
  * Changes to the Minecraft Classes
@@ -233,6 +223,9 @@ public class MixinMinecraftClient {
 		}
 		if(player!=null) {
 			LoTASModContainer.hud.tick();
+		}
+		if(!isLoadingWorld && !Minecraft.getInstance().isPaused()) {
+			TASk5.getInstance().onTick();
 		}
 	}
  

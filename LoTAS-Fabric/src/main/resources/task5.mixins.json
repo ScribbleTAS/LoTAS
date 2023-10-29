@@ -1,0 +1,21 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.minecrafttas.TASk5.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+  	"MixinInventory",
+  	"AccessorLevelStorage",
+  	"MixinMinecraftServer",
+  	"MixinPlayerList"
+  ],
+  "client": [
+  	"MixinOverlay",
+  	"MixinPauseMenu",
+  	"MixinClientLevel",
+  	"MixinMinecraft"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

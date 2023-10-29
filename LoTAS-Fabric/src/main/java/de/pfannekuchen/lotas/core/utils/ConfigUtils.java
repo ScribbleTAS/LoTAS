@@ -115,6 +115,7 @@ public class ConfigUtils {
 			ConfigUtils.setInt("hidden", "tickrate", 6);
 		if (ConfigUtils.getInt("hidden", "explosionoptimization") <= 0)
 			ConfigUtils.setInt("hidden", "explosionoptimization", 100);
+		ConfigUtils.setBoolean("ui", "hideTickrateMessages", true);
 		ConfigUtils.save();
 
 		/* Fill the configuration gui with the values read from the instantiated configuration file, so that the ConfigurationGui does not display placeholder values */

@@ -20,11 +20,13 @@
   "accessWidener": "lotas.accesswidener",
   "entrypoints": {
     "main": [
-      "de.pfannekuchen.lotas.core.LoTASModContainer"
+      "de.pfannekuchen.lotas.core.LoTASModContainer",
+      "com.minecrafttas.TASk5.TASk5"
     ]
   },
   "mixins": [
-    "lotas.mixin.json"
+    "lotas.mixin.json",
+    "task5.mixins.json"
   ],
 
   "depends": {
@@ -32,6 +34,5 @@
     "minecraft": "1.x.x"
   },
   "suggests": {
-    "another-mod": "*"
   }
 }
