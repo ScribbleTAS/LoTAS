@@ -41,10 +41,14 @@ public class ItemHandler {
 	}
 	
 	public void onItemAdd(int i, ItemStack stack) {
-		if(stack.getItem() == Items.AIR || TASk5.getInstance().countdown.isStopped()) {
+		if(stack.getItem() == Items.AIR) {
 			return;
 		}
-		if(itemList.add(stack.getItem()) && !lock) {
+		
+		if(!lock) {
+			if(!itemList.add(stack.getItem())) {
+				return;
+			}
 			Minecraft mc = Minecraft.getInstance();
 			mc.gui.getChat().addMessage(new TextComponent(ChatFormatting.GREEN+stack.getHoverName().getString()));
 			mc.level.playLocalSound(mc.player.blockPosition(), SoundEvents.NOTE_BLOCK_PLING, SoundSource.PLAYERS, 0.3f, 1f, false);
