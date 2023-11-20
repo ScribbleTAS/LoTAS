@@ -18,9 +18,10 @@ import com.mojang.blaze3d.vertex.PoseStack;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
-import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextComponent;
 import net.minecraft.server.MinecraftServer;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -40,12 +41,13 @@ public class ItemHandler {
 	}
 	
 	public void onItemAdd(int i, ItemStack stack) {
-		if(stack.getItem() == Items.AIR) {
+		if(stack.getItem() == Items.AIR || TASk5.getInstance().countdown.isStopped()) {
 			return;
 		}
 		if(itemList.add(stack.getItem()) && !lock) {
 			Minecraft mc = Minecraft.getInstance();
 			mc.gui.getChat().addMessage(new TextComponent(ChatFormatting.GREEN+stack.getHoverName().getString()));
+			mc.level.playLocalSound(mc.player.blockPosition(), SoundEvents.NOTE_BLOCK_PLING, SoundSource.PLAYERS, 0.3f, 1f, false);
 			TASk5.LOGGER.info("Added item {}", stack.getHoverName().getString());
 			save();
 		}

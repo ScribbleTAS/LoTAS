@@ -244,6 +244,9 @@ public class SavestateMod {
         
 		GLFW.glfwSetCursorPos(MCVer.getGLWindow().getWindow(), x, y);
 		mc.mouseHandler.turnPlayer();
+		if(tickratesaved==0) {
+			tickratesaved = 2f;
+		}
 		TickrateChangerMod.updateTickrate(tickratesaved);
 		System.gc();
 	}

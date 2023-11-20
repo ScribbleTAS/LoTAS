@@ -23,9 +23,11 @@ public class MixinPauseMenu extends Screen{
 
 	@Inject(method = "init", at = @At(value = "HEAD"))
 	public void inject_init(CallbackInfo ci) {
-		if (TASk5.getInstance().isLoading || TASk5.getInstance().countdown == null) {
+		if (TASk5.getInstance().isLoading) {
 			TASk5.getInstance().isLoading = false;
-			TASk5.getInstance().countdown = new Countdown();
+			if(TASk5.getInstance().countdown == null) {
+				TASk5.getInstance().countdown = new Countdown();
+			}
 		}
 	}
 	

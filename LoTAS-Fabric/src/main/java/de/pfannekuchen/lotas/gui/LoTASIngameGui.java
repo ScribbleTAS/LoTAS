@@ -7,6 +7,7 @@ import org.lwjgl.glfw.GLFW;
 
 import de.pfannekuchen.lotas.core.MCVer;
 import de.pfannekuchen.lotas.core.utils.ConfigUtils;
+import de.pfannekuchen.lotas.core.utils.KeybindsUtils;
 import de.pfannekuchen.lotas.core.utils.Timer;
 import de.pfannekuchen.lotas.gui.widgets.SmallCheckboxWidget;
 import de.pfannekuchen.lotas.mods.AIManipMod;
@@ -114,8 +115,13 @@ public class LoTASIngameGui {
 				activateTickrateField(true);
 			} else {
 				TickrateChangerMod.index--;
-				TickrateChangerMod.index = Mth.clamp(TickrateChangerMod.index, 1, 10);
-				TickrateChangerMod.updateTickrate(TickrateChangerMod.ticks[TickrateChangerMod.index]);
+				TickrateChangerMod.index = Mth.clamp(TickrateChangerMod.index, 0, 10);
+				if(TickrateChangerMod.index == 0) {
+					TickrateChangerMod.updateTickrate(0);
+					TickrateChangerMod.tickrateSaved = 20f;
+				} else {
+					TickrateChangerMod.updateTickrate(TickrateChangerMod.ticks[TickrateChangerMod.index]);
+				}
 			}
 		});
 

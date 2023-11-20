@@ -109,4 +109,8 @@ public class Countdown{
 		ticks = null;
 	}
 	
+	public boolean isStopped() {
+		return ticks == duration;
+	}
+	
 }

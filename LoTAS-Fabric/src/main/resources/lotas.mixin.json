@@ -1,6 +1,7 @@
 {
     "required": true,
     "minVersion": "0.8",
+	"refmap": "lotas.refmap.json",
     "package": "de.pfannekuchen.lotas.mixin",
     //#if MC>=11701
     //#if MC>=11904

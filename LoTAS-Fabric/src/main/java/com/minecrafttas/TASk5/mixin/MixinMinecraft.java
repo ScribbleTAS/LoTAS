@@ -23,7 +23,9 @@ public class MixinMinecraft {
 	public void injectdisplayGuiScreen(Screen guiScreenIn, CallbackInfo ci) {
 		if (TASk5.getInstance().isLoading && guiScreenIn == null) {
 			TASk5.getInstance().isLoading = false;
-			TASk5.getInstance().countdown = new Countdown();
+			if(TASk5.getInstance().countdown == null) {
+				TASk5.getInstance().countdown = new Countdown();
+			}
 		}
 	}
 	
